@@ -1,0 +1,39 @@
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+
+
+function Header({ len,login,setLogin,lenOrder }) {
+  return (
+    <div className='header'>
+        <p className='login' style={login ? {color:"Lime"} : {color:"IndianRed"}}>{login ? "АВТОРИЗОВАН" : "НЕАВТОРИЗОВАН"}</p>
+         <NavLink to="/">
+                    <p className='titleBTN'>Питомцы</p>
+                </NavLink>
+                <NavLink to="/login">
+                    <p className='titleBTN'> Логин</p>
+                </NavLink>
+                <NavLink to="/reg">
+                    <p className='titleBTN'> Регистрация</p>
+                </NavLink>
+                { login ? <NavLink to="/order">
+                    <p className='titleBTN'>Заказ
+                    {lenOrder ? <p className='count tilt-shaking'> | {lenOrder}</p> : ""}
+                    </p>
+                 </NavLink> : ""  }
+        { login ? <NavLink to="/cart">
+                    <p className='titleBTN counted'>Корзина
+                    {len ? <p className='count tilt-shaking'> | {len}</p> : ""}
+                    </p>
+                 </NavLink> : "" }
+        { login ? <NavLink to="/">
+                    <p className='titleBTN exit' onClick={() => setLogin(false)}>Выйти</p>
+                 </NavLink> : ""  }
+    </div>
+  )
+}
+
+export default Header
+
+
+// Альме́тьевск (тат. Әлмәт) — город в Республике Татарстан Российской Федерации. Административный центр Альметьевского района. Образует городское поселение город Альметьевск[3].
+// Самый крупный город в полицентрической Альметьевско-Бугульминско-Лениногорской агломерации и четвёртый по численности населения город Татарстана, центр Юго-Восточной экономической зоны Татарстана. «Велостолица» России.[4]
